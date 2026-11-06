@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTMover - Microsoft 365 Tenant-to-Tenant Migration</title>
+<meta name="description" content="MTMover migrates Email, OneDrive, SharePoint and Teams between Microsoft 365 tenants.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;color:#1f2937;line-height:1.6;background:#f8fafc}
+header{background:#0f172a;color:#fff;padding:16px 8%;display:flex;justify-content:space-between;align-items:center}
+header b{font-size:22px}header b span{color:#38bdf8}
+nav a{color:#cbd5e1;margin-left:20px;text-decoration:none}nav a:hover{color:#fff}
+.hero{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;padding:90px 8%;text-align:center}
+.hero h1{font-size:40px;margin-bottom:16px}.hero p{font-size:19px;color:#cbd5e1;max-width:720px;margin:0 auto 28px}
+.btn{display:inline-block;background:#38bdf8;color:#0f172a;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none}
+section{padding:60px 8%}h2{text-align:center;font-size:30px;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.card{background:#fff;border-radius:12px;padding:26px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.card h3{margin-bottom:8px;color:#1e3a8a}
+.steps .card h3::before{content:attr(data-n);display:inline-block;background:#38bdf8;color:#0f172a;width:30px;height:30px;border-radius:50%;text-align:center;line-height:30px;margin-right:10px}
+.contact{background:#0f172a;color:#fff;text-align:center}.contact p{color:#cbd5e1;margin-bottom:24px}
+footer{background:#020617;color:#64748b;text-align:center;padding:20px;font-size:14px}
+footer a{color:#94a3b8;margin:0 10px}
+</style>
+</head>
+<body>
+<header><b>MT<span>Mover</span></b><nav><a href="#features">Features</a><a href="#how">How it works</a><a href="#contact">Contact</a></nav></header>
+<div class="hero">
+<h1>Microsoft 365 Tenant-to-Tenant Migration</h1>
+<p>Move Email, OneDrive, SharePoint and Teams between Microsoft 365 tenants - safely, with dry-run first and read-only access to your source.</p>
+<a class="btn" href="#contact">Request a demo</a>
+</div>
+<section id="features">
+<h2>What MTMover migrates</h2>
+<div class="grid">
+<div class="card"><h3>Email</h3><p>Mailbox folders and items with incremental delta sync for cut-over.</p></div>
+<div class="card"><h3>OneDrive</h3><p>User files and folder structure to the destination tenant.</p></div>
+<div class="card"><h3>SharePoint</h3><p>Document libraries, lists and site pages.</p></div>
+<div class="card"><h3>Teams</h3><p>Teams, channels, messages and file attachments.</p></div>
+</div>
+</section>
+<section id="how" class="steps" style="background:#eef2ff">
+<h2>How it works</h2>
+<div class="grid">
+<div class="card"><h3 data-n="1">Onboard</h3><p>Connect source and destination tenants with admin consent.</p></div>
+<div class="card"><h3 data-n="2">Mapping</h3><p>Auto-map users, sites and teams; review and adjust before migrating.</p></div>
+<div class="card"><h3 data-n="3">Migrate</h3><p>Dry-run by default, then migrate and re-run deltas until cut-over.</p></div>
+</div>
+</section>
+<section id="contact" class="contact">
+<h2>Get in touch</h2>
+<p>Planning a tenant migration? Contact us for a demo and pricing.</p>
+<a class="btn" href="mailto:contact@mtmover.tech">contact@mtmover.tech</a>
+</section>
+<footer>&copy; 2026 MTMover &middot; <a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Statement</a></footer>
+</body>
+</html>
