@@ -134,3 +134,5 @@ footer .legal{margin-top:38px;padding-top:20px;border-top:1px solid #1f2733;disp
  .dd .menu{display:block;position:static;box-shadow:none;border:0;padding:0 0 0 10px}.dd>button:after{display:none}
 }
 @media(max-width:640px){.g2,.g3,.g4,.deck .items{grid-template-columns:1fr}.picker select{min-width:100%}.picker form{border-radius:18px}section{padding:52px 0}}
+/* S12 header pill hover */
+.right>a.pill:hover{background:var(--acc2);color:#fff!important;text-decoration:none}
