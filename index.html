@@ -1,58 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MTMover - Microsoft 365 Tenant-to-Tenant Migration</title>
-<meta name="description" content="MTMover migrates Email, OneDrive, SharePoint and Teams between Microsoft 365 tenants.">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Segoe UI,Arial,sans-serif;color:#1f2937;line-height:1.6;background:#f8fafc}
-header{background:#0f172a;color:#fff;padding:16px 8%;display:flex;justify-content:space-between;align-items:center}
-header b{font-size:22px}header b span{color:#38bdf8}
-nav a{color:#cbd5e1;margin-left:20px;text-decoration:none}nav a:hover{color:#fff}
-.hero{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;padding:90px 8%;text-align:center}
-.hero h1{font-size:40px;margin-bottom:16px}.hero p{font-size:19px;color:#cbd5e1;max-width:720px;margin:0 auto 28px}
-.btn{display:inline-block;background:#38bdf8;color:#0f172a;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none}
-section{padding:60px 8%}h2{text-align:center;font-size:30px;margin-bottom:36px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
-.card{background:#fff;border-radius:12px;padding:26px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.card h3{margin-bottom:8px;color:#1e3a8a}
-.steps .card h3::before{content:attr(data-n);display:inline-block;background:#38bdf8;color:#0f172a;width:30px;height:30px;border-radius:50%;text-align:center;line-height:30px;margin-right:10px}
-.contact{background:#0f172a;color:#fff;text-align:center}.contact p{color:#cbd5e1;margin-bottom:24px}
-footer{background:#020617;color:#64748b;text-align:center;padding:20px;font-size:14px}
-footer a{color:#94a3b8;margin:0 10px}
-</style>
-</head>
-<body>
-<header><b>MT<span>Mover</span></b><nav><a href="#features">Features</a><a href="#how">How it works</a><a href="#contact">Contact</a><a href="/account/">Account</a></nav></header>
-<div class="hero">
-<h1>Microsoft 365 Tenant-to-Tenant Migration</h1>
-<p>Move Email, OneDrive, SharePoint and Teams between Microsoft 365 tenants - safely, with dry-run first and read-only access to your source.</p>
-<a class="btn" href="#contact">Request a demo</a>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTMover - Microsoft 365 Tenant-to-Tenant Migration, Backup and Restore</title>
+<meta name="description" content="MTMover migrates Email, OneDrive, SharePoint and Teams between Microsoft 365 tenants, and provides IMAP migration, mailbox tools and encrypted backup. Runs on your own PC.">
+<link rel="canonical" href="https://mtmover.tech/">
+<meta property="og:title" content="MTMover - Microsoft 365 Tenant-to-Tenant Migration, Backup and Restore"><meta property="og:description" content="MTMover migrates Email, OneDrive, SharePoint and Teams between Microsoft 365 tenants, and provides IMAP migration, mailbox tools and encrypted backup. Runs on your own PC."><meta property="og:type" content="website"><meta property="og:url" content="https://mtmover.tech/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Cpath d='M8 21V11l4 5 4-5v10' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MTMover","operatingSystem":"Windows","applicationCategory":"BusinessApplication","url":"https://mtmover.tech/"}</script></head><body>
+<header class="top"><div class="wrap bar">
+<a class="brand" href="/"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#111"/><path d="M8 21V11l4 5 4-5v10M21 11h3m0 0-2-2m2 2-2 2m-1 6h3m-3 0 2-2m-2 2 2 2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>MTMover</a>
+<nav class="main">
+<div class="dd"><button type="button" aria-haspopup="true">Products</button><div class="menu"><a href="/products/tenant-to-tenant.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg><div><b>Tenant to Tenant Migration</b><span>Email, OneDrive, SharePoint and Teams</span></div></a><a href="/products/imap-migration.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div><b>IMAP Migration</b><span>IMAP to Microsoft 365, IMAP to IMAP</span></div></a><a href="/products/mailbox-tools.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><div><b>Mailbox Tools</b><span>Duplicate remover, PST / MBOX / EML, export</span></div></a><a href="/products/backup-restore.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><div><b>Backup & Restore</b><span>Encrypted, incremental Microsoft 365 backup</span></div></a></div></div>
+<a href="/features.html">Features</a><a href="/how-it-works.html">How it works</a><a href="/faq.html">FAQ</a><a href="/knowledge-base.html">Knowledge Base</a>
+</nav>
+<div class="right"><a href="/pricing.html">Pricing</a><a href="/download.html">Download</a><a href="/support.html">Support</a><a class="pill" href="/account/">Account &rsaquo;</a></div>
+<button class="burger" type="button" aria-label="Menu">&#9776;</button>
+</div></header>
+
+<div class="hero"><div class="wrap">
+<h1>All-in-one Microsoft 365 Migration and Backup Toolkit</h1>
+<p class="sub">Move Email, OneDrive, SharePoint and Teams between Microsoft 365 tenants. Clean up mailboxes, back up and restore your data. All from one desktop app that runs on your own PC.</p>
+<div class="picker"><h2>Select your migration scenario</h2>
+<form id="scn"><select name="src" aria-label="Source"><option value="m365">Microsoft 365 tenant</option><option value="imap">IMAP mail server</option><option value="files">PST / MBOX / EML files</option></select>
+<span class="to">To</span>
+<select name="dst" aria-label="Destination"><option value="m365">Microsoft 365 tenant</option><option value="imap">IMAP mail server</option><option value="files">PST / MBOX / EML files</option><option value="backup">Backup (encrypted)</option></select>
+<button class="pill" type="submit">Go! &rarr;</button></form></div>
+<div class="deck">
+<div class="lead"><span class="tag">FREE TRIAL</span><h3>Try every module</h3><p>14 days, up to 5 items per module run. See exactly what your tenants will look like before you buy.</p><a class="pill" href="/download.html">Download free trial</a></div>
+<div class="items"><div class="it"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg><h4>Tenant to Tenant</h4><p>Email, OneDrive, SharePoint and Teams</p><a class="pill" href="/products/tenant-to-tenant.html">Learn more</a></div><div class="it"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><h4>IMAP</h4><p>IMAP to Microsoft 365, IMAP to IMAP</p><a class="pill" href="/products/imap-migration.html">Learn more</a></div><div class="it"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><h4>Mailbox Tools</h4><p>Duplicate remover, PST / MBOX / EML, export</p><a class="pill" href="/products/mailbox-tools.html">Learn more</a></div><div class="it"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><h4>Backup & Restore</h4><p>Encrypted, incremental Microsoft 365 backup</p><a class="pill" href="/products/backup-restore.html">Learn more</a></div></div></div>
+</div></div>
+
+<section><div class="wrap">
+<div class="sec-h"><h2>What MTMover migrates</h2><p>One tool for the four workloads that make up a tenant move.</p></div>
+<div class="grid g4">
+<div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><h3>Email</h3><p>Mailbox folders and items, including nested folders, with incremental delta sync for cut-over.</p></div>
+<div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-7.97A6 6 0 0 1 18 9.5a4.25 4.25 0 0 1-.5 8.5z"/></svg><h3>OneDrive</h3><p>User files and folder structure copied to the destination tenant.</p></div>
+<div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg><h3>SharePoint</h3><p>Document libraries, lists and site pages. A whole site per run, no scope choices to get wrong.</p></div>
+<div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a4.5 4.5 0 0 1 4 4.5"/></svg><h3>Teams</h3><p>Teams, channels, messages and file attachments.</p></div>
 </div>
-<section id="features">
-<h2>What MTMover migrates</h2>
-<div class="grid">
-<div class="card"><h3>Email</h3><p>Mailbox folders and items with incremental delta sync for cut-over.</p></div>
-<div class="card"><h3>OneDrive</h3><p>User files and folder structure to the destination tenant.</p></div>
-<div class="card"><h3>SharePoint</h3><p>Document libraries, lists and site pages.</p></div>
-<div class="card"><h3>Teams</h3><p>Teams, channels, messages and file attachments.</p></div>
+<p style="text-align:center;margin-top:26px"><a href="/products/tenant-to-tenant.html">See Tenant to Tenant Migration &rarr;</a></p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<div class="sec-h"><h2>Three steps. Nothing hidden.</h2><p>The same flow for every module: Onboard, Mapping, Migrate.</p></div>
+<div class="grid g3 steps">
+<div class="card step"><h3>Onboard</h3><p>Connect the source and destination tenants with admin consent. Source access is read-only.</p></div>
+<div class="card step"><h3>Mapping</h3><p>Auto-map users, sites and teams. Review the pairs, change them with a drop-down, or import a CSV.</p></div>
+<div class="card step"><h3>Migrate</h3><p>Dry-run is on by default. Run the real migration, then re-run deltas until cut-over.</p></div>
 </div>
-</section>
-<section id="how" class="steps" style="background:#eef2ff">
-<h2>How it works</h2>
-<div class="grid">
-<div class="card"><h3 data-n="1">Onboard</h3><p>Connect source and destination tenants with admin consent.</p></div>
-<div class="card"><h3 data-n="2">Mapping</h3><p>Auto-map users, sites and teams; review and adjust before migrating.</p></div>
-<div class="card"><h3 data-n="3">Migrate</h3><p>Dry-run by default, then migrate and re-run deltas until cut-over.</p></div>
+</div></section>
+
+<section><div class="wrap split">
+<div><h2>Built for IT admins who cannot afford surprises</h2>
+<ul class="ticks">
+<li><span><b>Dry-run first.</b> See what would be copied before anything is written.</span></li>
+<li><span><b>Source stays untouched.</b> MTMover only copies; it never edits the source tenant.</span></li>
+<li><span><b>Re-run safely.</b> Items that already arrived are skipped, so deltas do not create duplicates.</span></li>
+<li><span><b>Your data stays with you.</b> The app runs on your PC and talks to Microsoft 365 through Microsoft Graph.</span></li>
+</ul><a class="pill" href="/features.html">Explore all features</a></div>
+<div class="panel"><div class="dots"><i></i><i></i><i></i></div>
+<div class="m"># Step 3 - Migrate (example)</div>
+<div><span class="b">Mode</span>   dry-run (default)</div>
+<div><span class="b">Pair</span>   source@contoso.com &rarr; user@fabrikam.com</div>
+<div class="g">+ Inbox ............ 195 items planned</div>
+<div class="g">+ Sent Items ........ 78 items planned</div>
+<div class="g">+ Inbox/Projects .... 12 items planned</div>
+<div class="y">~ 5 items already migrated, skipped</div>
+<div class="m">Nothing was written. Clear dry-run to migrate.</div></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<div class="sec-h"><h2>More than migration</h2><p>Three more modules in the same app and the same license.</p></div>
+<div class="grid g3">
+<div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><h3>IMAP Migration</h3><p>IMAP to Microsoft 365 and IMAP to IMAP.</p><p style="margin-top:12px"><a href="/products/imap-migration.html">Learn more &rarr;</a></p></div>
+<div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><h3>Mailbox Tools</h3><p>Duplicate remover, PST / MBOX / EML import, and export.</p><p style="margin-top:12px"><a href="/products/mailbox-tools.html">Learn more &rarr;</a></p></div>
+<div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><h3>Backup &amp; Restore</h3><p>Encrypted, incremental backups of Microsoft 365, and restore when you need it.</p><p style="margin-top:12px"><a href="/products/backup-restore.html">Learn more &rarr;</a></p></div>
+</div></div></section>
+<section class="cta"><div class="wrap"><h2>Try MTMover on your own tenants</h2><p>Download the free trial and run a dry-run migration today. No credit card needed.</p><a class="pill lg" href="/download.html">Download free trial</a> &nbsp; <a class="pill lg ghost" href="mailto:contact@mtmover.tech?subject=MTMover%20demo%20request">Request a demo</a></div></section>
+
+<footer><div class="wrap">
+<div class="cols">
+<div><a class="brand" href="/" style="margin:0 0 12px"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#111"/><path d="M8 21V11l4 5 4-5v10M21 11h3m0 0-2-2m2 2-2 2m-1 6h3m-3 0 2-2m-2 2 2 2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>MTMover</a><p>Move. Protect. Restore.<br>One desktop tool for Microsoft 365 migration, mailbox tools and backup. It runs on your own PC, next to your data.</p></div>
+<div><h5>Products</h5><a href="/products/tenant-to-tenant.html">Tenant to Tenant Migration</a><a href="/products/imap-migration.html">IMAP Migration</a><a href="/products/mailbox-tools.html">Mailbox Tools</a><a href="/products/backup-restore.html">Backup & Restore</a></div>
+<div><h5>Resources</h5><a href="/features.html">Features</a><a href="/how-it-works.html">How it works</a><a href="/knowledge-base.html">Knowledge Base</a><a href="/faq.html">FAQ</a></div>
+<div><h5>Company</h5><a href="/pricing.html">Pricing</a><a href="/download.html">Download</a><a href="/support.html">Support</a><a href="mailto:contact@mtmover.tech">contact@mtmover.tech</a><a href="/privacy.html">Privacy Statement</a><a href="/terms.html">Terms of Service</a></div>
 </div>
-</section>
-<section id="contact" class="contact">
-<h2>Get in touch</h2>
-<p>Planning a tenant migration? Contact us for a demo and pricing.</p>
-<a class="btn" href="mailto:contact@mtmover.tech">contact@mtmover.tech</a>
-</section>
-<footer>&copy; 2026 MTMover &middot; <a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Statement</a></footer>
-</body>
-</html>
+<div class="legal"><span>&copy; 2026 MTMover. All rights reserved.</span><span>Microsoft 365, Exchange Online, OneDrive, SharePoint and Teams are trademarks of Microsoft Corporation.</span></div>
+</div></footer>
+<script src="/assets/site.js"></script>
+</body></html>
