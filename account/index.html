@@ -28,6 +28,7 @@ button:disabled{opacity:.5;cursor:default}
 .msg.ok{display:block;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
 .hide{display:none}
 footer{background:#020617;color:#64748b;text-align:center;padding:20px;font-size:14px}
+/* S03 */
 </style>
 </head>
 <body>
@@ -38,10 +39,10 @@ footer{background:#020617;color:#64748b;text-align:center;padding:20px;font-size
 <form id="f-register" class="hide" autocomplete="on">
 <h1>Create account</h1>
 <p class="sub">Use the email address you buy the license with. After that, sign in to MTMover with this email.</p>
-<input id="r-email" type="email" placeholder="Email" autocomplete="email" required>
+<div class="row"><input id="r-email" type="email" placeholder="Email" autocomplete="email" required><button type="button" id="r-send">Send code</button></div>
 <input id="r-pw" type="password" placeholder="Password (at least 8 characters)" autocomplete="new-password" required>
 <input id="r-pw2" type="password" placeholder="Confirm password" autocomplete="new-password" required>
-<div class="row"><input id="r-code" inputmode="numeric" maxlength="6" placeholder="6-digit code from the email"><button type="button" id="r-send">Send code</button></div>
+<input id="r-code" inputmode="numeric" maxlength="6" placeholder="6-digit code (click Send code first)">
 <div class="msg" id="r-msg"></div>
 <button class="main" type="submit" id="r-go">Create account</button>
 </form>
@@ -49,8 +50,8 @@ footer{background:#020617;color:#64748b;text-align:center;padding:20px;font-size
 <form id="f-reset" class="hide" autocomplete="on">
 <h1>Forgot password</h1>
 <p class="sub">We send a code to your email. Enter it with your new password. You will be signed out on all computers.</p>
-<input id="p-email" type="email" placeholder="Email" autocomplete="email" required>
-<div class="row"><input id="p-code" inputmode="numeric" maxlength="6" placeholder="6-digit code from the email"><button type="button" id="p-send">Send code</button></div>
+<div class="row"><input id="p-email" type="email" placeholder="Email" autocomplete="email" required><button type="button" id="p-send">Send code</button></div>
+<input id="p-code" inputmode="numeric" maxlength="6" placeholder="6-digit code (click Send code first)">
 <input id="p-pw" type="password" placeholder="New password (at least 8 characters)" autocomplete="new-password" required>
 <input id="p-pw2" type="password" placeholder="Confirm new password" autocomplete="new-password" required>
 <div class="msg" id="p-msg"></div>
