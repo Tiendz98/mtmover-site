@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTMover - Account</title>
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;color:#1f2937;line-height:1.6;background:#f8fafc;min-height:100vh;display:flex;flex-direction:column}
+header{background:#0f172a;color:#fff;padding:16px 8%;display:flex;justify-content:space-between;align-items:center}
+header a.logo{color:#fff;text-decoration:none;font-size:22px;font-weight:700}header a.logo span{color:#38bdf8}
+nav a{color:#cbd5e1;margin-left:20px;text-decoration:none}nav a:hover{color:#fff}
+main{flex:1;display:flex;justify-content:center;align-items:flex-start;padding:50px 16px}
+.box{background:#fff;border-radius:12px;box-shadow:0 2px 14px rgba(0,0,0,.08);width:100%;max-width:440px;padding:28px}
+.tabs{display:flex;gap:6px;margin-bottom:20px;background:#eef2ff;border-radius:8px;padding:4px}
+.tabs a{flex:1;text-align:center;padding:8px;border-radius:6px;text-decoration:none;color:#1e3a8a;font-weight:600}
+.tabs a.on{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+h1{font-size:22px;margin-bottom:4px}p.sub{color:#64748b;font-size:14px;margin-bottom:18px}
+input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px;margin-bottom:12px}
+input:focus{outline:none;border-color:#38bdf8}
+.row{display:flex;gap:8px}.row input{flex:1}
+button{padding:11px 16px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;border:1px solid #0f172a;background:#fff;color:#0f172a;white-space:nowrap;margin-bottom:12px}
+button.main{width:100%;background:#0f172a;color:#fff}
+button:disabled{opacity:.5;cursor:default}
+.msg{display:none;padding:10px 12px;border-radius:8px;font-size:14px;margin-bottom:12px}
+.msg.err{display:block;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.msg.ok{display:block;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.hide{display:none}
+footer{background:#020617;color:#64748b;text-align:center;padding:20px;font-size:14px}
+</style>
+</head>
+<body>
+<header><a class="logo" href="/">MT<span>Mover</span></a><nav><a href="/">Home</a><a href="/#contact">Contact</a></nav></header>
+<main><div class="box">
+<div class="tabs"><a href="#register" id="t-register">Create account</a><a href="#reset" id="t-reset">Forgot password</a></div>
+
+<form id="f-register" class="hide" autocomplete="on">
+<h1>Create account</h1>
+<p class="sub">Use the email address you buy the license with. After that, sign in to MTMover with this email.</p>
+<input id="r-email" type="email" placeholder="Email" autocomplete="email" required>
+<input id="r-pw" type="password" placeholder="Password (at least 8 characters)" autocomplete="new-password" required>
+<input id="r-pw2" type="password" placeholder="Confirm password" autocomplete="new-password" required>
+<div class="row"><input id="r-code" inputmode="numeric" maxlength="6" placeholder="6-digit code from the email"><button type="button" id="r-send">Send code</button></div>
+<div class="msg" id="r-msg"></div>
+<button class="main" type="submit" id="r-go">Create account</button>
+</form>
+
+<form id="f-reset" class="hide" autocomplete="on">
+<h1>Forgot password</h1>
+<p class="sub">We send a code to your email. Enter it with your new password. You will be signed out on all computers.</p>
+<input id="p-email" type="email" placeholder="Email" autocomplete="email" required>
+<div class="row"><input id="p-code" inputmode="numeric" maxlength="6" placeholder="6-digit code from the email"><button type="button" id="p-send">Send code</button></div>
+<input id="p-pw" type="password" placeholder="New password (at least 8 characters)" autocomplete="new-password" required>
+<input id="p-pw2" type="password" placeholder="Confirm new password" autocomplete="new-password" required>
+<div class="msg" id="p-msg"></div>
+<button class="main" type="submit" id="p-go">Set new password</button>
+</form>
+</div></main>
+<footer>&copy; 2026 MTMover</footer>
+<script>
+const API = 'https://mtmover-license.mtmover.workers.dev';
+const $ = (id) => document.getElementById(id);
+async function call(p, body) {
+  let r, j = {};
+  try { r = await fetch(API + p, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }); }
+  catch (e) { throw new Error('Cannot reach the server. Check your connection and try again.'); }
+  try { j = await r.json(); } catch (e) {}
+  if (!r.ok || !j.ok) throw new Error(j.message || ('Error ' + r.status));
+  return j;
+}
+function msg(id, text, ok) { const m = $(id); m.className = 'msg ' + (ok ? 'ok' : 'err'); m.textContent = text; }
+function clear(id) { $(id).className = 'msg'; $(id).textContent = ''; }
+function show() {
+  const tab = location.hash === '#reset' ? 'reset' : 'register';
+  ['register', 'reset'].forEach((t) => { $('f-' + t).classList.toggle('hide', t !== tab); $('t-' + t).classList.toggle('on', t === tab); });
+}
+window.addEventListener('hashchange', show); show();
+function cooldown(btn) {
+  let n = 60; btn.disabled = true; btn.textContent = 'Resend (' + n + ')';
+  const t = setInterval(() => { n--; if (n <= 0) { clearInterval(t); btn.disabled = false; btn.textContent = 'Send code'; } else btn.textContent = 'Resend (' + n + ')'; }, 1000);
+}
+async function sendCode(pfx, purpose) {
+  const email = $(pfx + '-email').value.trim(), btn = $(pfx + '-send');
+  clear(pfx + '-msg');
+  if (!email) return msg(pfx + '-msg', 'Enter your email first.');
+  btn.disabled = true;
+  try { await call('/v1/email/code', { email, purpose }); msg(pfx + '-msg', 'If the email is valid, a code was sent. Check Inbox and Spam. The code expires in 10 minutes.', true); cooldown(btn); }
+  catch (e) { msg(pfx + '-msg', e.message); btn.disabled = false; }
+}
+$('r-send').onclick = () => sendCode('r', 'register');
+$('p-send').onclick = () => sendCode('p', 'reset');
+function checkPw(pfx, a, b) {
+  if ($(a).value.length < 8) { msg(pfx + '-msg', 'The password must have at least 8 characters.'); return false; }
+  if ($(a).value !== $(b).value) { msg(pfx + '-msg', 'The passwords do not match.'); return false; }
+  if (!/^\d{6}$/.test($(pfx + '-code').value.trim())) { msg(pfx + '-msg', 'Click Send code, then enter the 6-digit code from your email.'); return false; }
+  return true;
+}
+$('f-register').onsubmit = async (ev) => {
+  ev.preventDefault(); clear('r-msg'); if (!checkPw('r', 'r-pw', 'r-pw2')) return;
+  const go = $('r-go'); go.disabled = true;
+  try { await call('/v1/register', { email: $('r-email').value.trim(), password: $('r-pw').value, code: $('r-code').value.trim() });
+    msg('r-msg', 'Account created. Open MTMover and sign in with this email.', true); $('f-register').reset(); }
+  catch (e) { msg('r-msg', e.message); }
+  go.disabled = false;
+};
+$('f-reset').onsubmit = async (ev) => {
+  ev.preventDefault(); clear('p-msg'); if (!checkPw('p', 'p-pw', 'p-pw2')) return;
+  const go = $('p-go'); go.disabled = true;
+  try { await call('/v1/password/reset', { email: $('p-email').value.trim(), code: $('p-code').value.trim(), password: $('p-pw').value });
+    msg('p-msg', 'Password changed. Sign in to MTMover with the new password.', true); $('f-reset').reset(); }
+  catch (e) { msg('p-msg', e.message); }
+  go.disabled = false;
+};
+</script>
+</body>
+</html>
