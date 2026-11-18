@@ -76,9 +76,11 @@ function show() {
   ['register', 'reset'].forEach((t) => { $('f-' + t).classList.toggle('hide', t !== tab); $('t-' + t).classList.toggle('on', t === tab); });
 }
 window.addEventListener('hashchange', show); show();
+const timers = {};
+function stopCooldown(btn) { clearInterval(timers[btn.id]); delete timers[btn.id]; btn.disabled = false; btn.textContent = 'Send code'; }
 function cooldown(btn) {
-  let n = 60; btn.disabled = true; btn.textContent = 'Resend (' + n + ')';
-  const t = setInterval(() => { n--; if (n <= 0) { clearInterval(t); btn.disabled = false; btn.textContent = 'Send code'; } else btn.textContent = 'Resend (' + n + ')'; }, 1000);
+  let n = 60; clearInterval(timers[btn.id]); btn.disabled = true; btn.textContent = 'Resend (' + n + ')';
+  timers[btn.id] = setInterval(() => { n--; if (n <= 0) stopCooldown(btn); else btn.textContent = 'Resend (' + n + ')'; }, 1000);
 }
 async function sendCode(pfx, purpose) {
   const email = $(pfx + '-email').value.trim(), btn = $(pfx + '-send');
@@ -100,7 +102,7 @@ $('f-register').onsubmit = async (ev) => {
   ev.preventDefault(); clear('r-msg'); if (!checkPw('r', 'r-pw', 'r-pw2')) return;
   const go = $('r-go'); go.disabled = true;
   try { await call('/v1/register', { email: $('r-email').value.trim(), password: $('r-pw').value, code: $('r-code').value.trim() });
-    msg('r-msg', 'Account created. Open MTMover and sign in with this email.', true); $('f-register').reset(); }
+    msg('r-msg', 'Account created. Open MTMover and sign in with this email.', true); $('f-register').reset(); stopCooldown($('r-send')); }
   catch (e) { msg('r-msg', e.message); }
   go.disabled = false;
 };
@@ -108,7 +110,7 @@ $('f-reset').onsubmit = async (ev) => {
   ev.preventDefault(); clear('p-msg'); if (!checkPw('p', 'p-pw', 'p-pw2')) return;
   const go = $('p-go'); go.disabled = true;
   try { await call('/v1/password/reset', { email: $('p-email').value.trim(), code: $('p-code').value.trim(), password: $('p-pw').value });
-    msg('p-msg', 'Password changed. Sign in to MTMover with the new password.', true); $('f-reset').reset(); }
+    msg('p-msg', 'Password changed. Sign in to MTMover with the new password.', true); $('f-reset').reset(); stopCooldown($('p-send')); }
   catch (e) { msg('p-msg', e.message); }
   go.disabled = false;
 };
