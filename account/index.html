@@ -1,120 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MTMover - Account</title>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Account - MTMover</title>
 <meta name="robots" content="noindex">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Segoe UI,Arial,sans-serif;color:#1f2937;line-height:1.6;background:#f8fafc;min-height:100vh;display:flex;flex-direction:column}
-header{background:#0f172a;color:#fff;padding:16px 8%;display:flex;justify-content:space-between;align-items:center}
-header a.logo{color:#fff;text-decoration:none;font-size:22px;font-weight:700}header a.logo span{color:#38bdf8}
-nav a{color:#cbd5e1;margin-left:20px;text-decoration:none}nav a:hover{color:#fff}
-main{flex:1;display:flex;justify-content:center;align-items:flex-start;padding:50px 16px}
-.box{background:#fff;border-radius:12px;box-shadow:0 2px 14px rgba(0,0,0,.08);width:100%;max-width:440px;padding:28px}
-.tabs{display:flex;gap:6px;margin-bottom:20px;background:#eef2ff;border-radius:8px;padding:4px}
-.tabs a{flex:1;text-align:center;padding:8px;border-radius:6px;text-decoration:none;color:#1e3a8a;font-weight:600}
-.tabs a.on{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-h1{font-size:22px;margin-bottom:4px}p.sub{color:#64748b;font-size:14px;margin-bottom:18px}
-input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px;margin-bottom:12px}
-input:focus{outline:none;border-color:#38bdf8}
-.row{display:flex;gap:8px}.row input{flex:1}
-button{padding:11px 16px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;border:1px solid #0f172a;background:#fff;color:#0f172a;white-space:nowrap;margin-bottom:12px}
-button.main{width:100%;background:#0f172a;color:#fff}
-button:disabled{opacity:.5;cursor:default}
-.msg{display:none;padding:10px 12px;border-radius:8px;font-size:14px;margin-bottom:12px}
-.msg.err{display:block;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
-.msg.ok{display:block;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
-.hide{display:none}
-footer{background:#020617;color:#64748b;text-align:center;padding:20px;font-size:14px}
-/* S03 */
-</style>
-</head>
-<body>
-<header><a class="logo" href="/">MT<span>Mover</span></a><nav><a href="/">Home</a><a href="/#contact">Contact</a></nav></header>
-<main><div class="box">
-<div class="tabs"><a href="#register" id="t-register">Create account</a><a href="#reset" id="t-reset">Forgot password</a></div>
 
+
+<link rel="icon" type="image/png" href="/assets/logo.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head><body>
+<header class="top"><div class="wrap bar">
+<a class="brand" href="/"><img src="/assets/logo.png" width="30" height="30" alt="MTMover logo" style="border-radius:0">MTMover</a>
+<nav class="main">
+<div class="dd"><button type="button" aria-haspopup="true">Products</button><div class="menu"><a href="/products/tenant-to-tenant.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg><div><b>Tenant to Tenant Migration</b><span>Email, OneDrive, SharePoint and Teams</span></div></a><a href="/products/imap-migration.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div><b>IMAP Migration</b><span>IMAP to Microsoft 365, IMAP to IMAP</span></div></a><a href="/products/mailbox-tools.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><div><b>Mailbox Tools</b><span>Duplicate remover, PST / MBOX / EML, export</span></div></a><a href="/products/backup-restore.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><div><b>Backup & Restore</b><span>Encrypted, incremental Microsoft 365 backup</span></div></a></div></div>
+<a href="/features.html">Features</a><a href="/how-it-works.html">How it works</a><a href="/faq.html">FAQ</a><a href="/knowledge-base.html">Knowledge Base</a>
+</nav>
+<div class="right"><a href="/pricing.html">Pricing</a><a href="/download.html">Download</a><a href="/support.html">Support</a><a class="pill" href="/account/">Account &rsaquo;</a></div>
+<button class="burger" type="button" aria-label="Menu">&#9776;</button>
+</div></header>
+<style>
+.ac{padding:46px 0 70px;background:#f6f8fb;min-height:60vh}
+.ac h1{font-size:26px;line-height:1.2;margin-bottom:4px}.ac h2{font-size:21px;margin:30px 0 10px}
+.ac-sub{color:var(--mut);font-size:14.5px;margin:4px 0 16px}
+.ac-box{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px rgba(15,23,42,.07);width:100%;max-width:460px;margin:0 auto;padding:28px}
+.ac-tabs{display:flex;gap:6px;margin-bottom:22px;background:var(--soft);border-radius:10px;padding:4px}
+.ac-tabs a{flex:1;text-align:center;padding:9px 6px;border-radius:8px;color:#2b3340;font-weight:600;font-size:14.5px}
+.ac-tabs a:hover{text-decoration:none}.ac-tabs a.on{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.1);color:var(--ink)}
+.ac input[type=email],.ac input[type=password],.ac input[type=text],.ac input:not([type]){width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;font-size:15px;margin-bottom:12px;background:#fff}
+.ac input:focus{outline:none;border-color:var(--acc)}
+.ac-row{display:flex;gap:8px}.ac-row input{flex:1;min-width:0}
+.ac-btn{display:inline-block;padding:10px 16px;border-radius:9px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;border:1px solid var(--black);background:#fff;color:var(--black);white-space:nowrap;margin-bottom:12px}
+.ac-btn:hover{text-decoration:none;background:var(--soft)}
+.ac-main{width:100%;background:var(--black);color:#fff}.ac-main:hover{background:#1c2430}
+.ac-pri{background:var(--black);color:#fff;margin-bottom:0}.ac-pri:hover{background:#1c2430}
+.ac-btn:disabled{opacity:.5;cursor:default}
+.ac-msg{display:none;padding:10px 12px;border-radius:9px;font-size:14px;margin-bottom:12px}
+.ac-msg.err{display:block;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.ac-msg.ok{display:block;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.ac-alt{text-align:center;font-size:14.5px;color:var(--mut)}
+.ac-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.ac-note{background:#f1f7fd;border-left:4px solid var(--acc);border-radius:8px;padding:12px 16px;margin:10px 0 0;font-size:15px}
+.ac-bar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}.ac-bar input{flex:1;min-width:200px;margin-bottom:0!important}.ac-bar .ac-btn{margin-bottom:0}
+.ac .tw{background:#fff;border:1px solid var(--line);border-radius:14px}
+.ac .tbl tr.ac-dim td{color:#8a93a1}
+.hide{display:none!important}
+</style>
+<section class="ac"><div class="wrap">
+<div id="auth" class="ac-box">
+<div class="ac-tabs"><a href="#signin" id="t-signin">Sign in</a><a href="#register" id="t-register">Create account</a><a href="#reset" id="t-reset">Forgot password</a></div>
+<form id="f-signin" class="hide" autocomplete="on">
+<h1>Sign in</h1>
+<p class="ac-sub">Use the email and password of your MTMover account. It is the same account you use in the MTMover app.</p>
+<input id="l-email" type="email" placeholder="Email" autocomplete="email" required>
+<input id="l-pw" type="password" placeholder="Password" autocomplete="current-password" required>
+<div class="ac-msg" id="l-msg"></div>
+<button class="ac-btn ac-main" type="submit" id="l-go">Sign in</button>
+<p class="ac-alt"><a href="#reset">Forgot password?</a> &middot; <a href="#register">Create account</a></p>
+</form>
 <form id="f-register" class="hide" autocomplete="on">
 <h1>Create account</h1>
-<p class="sub">Use the email address you buy the license with. After that, sign in to MTMover with this email.</p>
-<div class="row"><input id="r-email" type="email" placeholder="Email" autocomplete="email" required><button type="button" id="r-send">Send code</button></div>
+<p class="ac-sub">Use the email address you buy the license with. After that, sign in to MTMover with this email.</p>
+<div class="ac-row"><input id="r-email" type="email" placeholder="Email" autocomplete="email" required><button type="button" class="ac-btn" id="r-send">Send code</button></div>
 <input id="r-pw" type="password" placeholder="Password (at least 8 characters)" autocomplete="new-password" required>
 <input id="r-pw2" type="password" placeholder="Confirm password" autocomplete="new-password" required>
 <input id="r-code" inputmode="numeric" maxlength="6" placeholder="6-digit code (click Send code first)">
-<div class="msg" id="r-msg"></div>
-<button class="main" type="submit" id="r-go">Create account</button>
+<div class="ac-msg" id="r-msg"></div>
+<button class="ac-btn ac-main" type="submit" id="r-go">Create account</button>
+<p class="ac-alt">Already have an account? <a href="#signin">Sign in</a></p>
 </form>
-
 <form id="f-reset" class="hide" autocomplete="on">
 <h1>Forgot password</h1>
-<p class="sub">We send a code to your email. Enter it with your new password. You will be signed out on all computers.</p>
-<div class="row"><input id="p-email" type="email" placeholder="Email" autocomplete="email" required><button type="button" id="p-send">Send code</button></div>
+<p class="ac-sub">We send a code to your email. Enter it with your new password. You will be signed out on all computers.</p>
+<div class="ac-row"><input id="p-email" type="email" placeholder="Email" autocomplete="email" required><button type="button" class="ac-btn" id="p-send">Send code</button></div>
 <input id="p-code" inputmode="numeric" maxlength="6" placeholder="6-digit code (click Send code first)">
 <input id="p-pw" type="password" placeholder="New password (at least 8 characters)" autocomplete="new-password" required>
 <input id="p-pw2" type="password" placeholder="Confirm new password" autocomplete="new-password" required>
-<div class="msg" id="p-msg"></div>
-<button class="main" type="submit" id="p-go">Set new password</button>
+<div class="ac-msg" id="p-msg"></div>
+<button class="ac-btn ac-main" type="submit" id="p-go">Set new password</button>
+<p class="ac-alt"><a href="#signin">Back to sign in</a></p>
 </form>
-</div></main>
-<footer>&copy; 2026 MTMover</footer>
+</div>
+<div id="dash" class="hide">
+<div class="ac-top"><div><h1>My account</h1><p class="ac-sub">Signed in as <b id="who"></b></p></div><button type="button" class="ac-btn" id="signout">Sign out</button></div>
+<div id="trial" class="ac-note hide"></div>
+<h2>Licenses</h2>
+<div class="tw"><table class="tbl"><thead><tr><th>Product</th><th>Quantity</th><th>Used</th><th>Available</th><th>Valid until</th><th>Status</th></tr></thead><tbody id="lic-body"></tbody></table></div>
+<p id="lic-empty" class="ac-sub hide">You have no licenses yet. See the <a href="/pricing.html">pricing page</a>.</p>
+<p style="margin-top:16px"><a class="ac-btn ac-pri" href="/pricing.html">Buy more licenses</a></p>
+<h2>Sources already used</h2>
+<p class="ac-sub">A source (mailbox, OneDrive account, SharePoint or Teams site, or user) uses one license unit the first time a real job runs for it. Running it again, or moving it to another destination, does not use another unit.</p>
+<div class="ac-bar"><input id="u-filter" type="text" placeholder="Filter by source, project or product"><button type="button" class="ac-btn" id="u-csv">Download CSV</button></div>
+<div class="tw"><table class="tbl"><thead><tr><th>Product</th><th>Source</th><th>Project</th><th>Date</th><th>License</th></tr></thead><tbody id="u-body"></tbody></table></div>
+<p id="u-note" class="ac-sub"></p>
+</div>
+</div></section><footer><div class="wrap">
+<div class="cols">
+<div><a class="brand" href="/" style="margin:0 0 12px"><img src="/assets/logo.png" width="30" height="30" alt="MTMover logo" style="border-radius:0">MTMover</a><p>Move. Protect. Restore.<br>One desktop tool for Microsoft 365 migration, mailbox tools and backup. It runs on your own PC, next to your data.</p></div>
+<div><h5>Products</h5><a href="/products/tenant-to-tenant.html">Tenant to Tenant Migration</a><a href="/products/imap-migration.html">IMAP Migration</a><a href="/products/mailbox-tools.html">Mailbox Tools</a><a href="/products/backup-restore.html">Backup & Restore</a></div>
+<div><h5>Resources</h5><a href="/features.html">Features</a><a href="/how-it-works.html">How it works</a><a href="/knowledge-base.html">Knowledge Base</a><a href="/faq.html">FAQ</a></div>
+<div><h5>Company</h5><a href="/pricing.html">Pricing</a><a href="/download.html">Download</a><a href="/support.html">Support</a><a href="mailto:contact@mtmover.tech">contact@mtmover.tech</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a><a href="/eula.html">License Agreement</a><a href="/refund.html">Refund Policy</a></div>
+</div>
+<div class="legal"><span>&copy; 2026 MTMover. All rights reserved.</span><span>Microsoft 365, Exchange Online, OneDrive, SharePoint and Teams are trademarks of Microsoft Corporation.</span></div>
+</div></footer>
+<script src="/assets/site.js"></script>
 <script>
-const API = 'https://mtmover-license.mtmover.workers.dev';
-const $ = (id) => document.getElementById(id);
-async function call(p, body) {
-  let r, j = {};
-  try { r = await fetch(API + p, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }); }
-  catch (e) { throw new Error('Cannot reach the server. Check your connection and try again.'); }
-  try { j = await r.json(); } catch (e) {}
-  if (!r.ok || !j.ok) throw new Error(j.message || ('Error ' + r.status));
-  return j;
-}
-function msg(id, text, ok) { const m = $(id); m.className = 'msg ' + (ok ? 'ok' : 'err'); m.textContent = text; }
-function clear(id) { $(id).className = 'msg'; $(id).textContent = ''; }
-function show() {
-  const tab = location.hash === '#reset' ? 'reset' : 'register';
-  ['register', 'reset'].forEach((t) => { $('f-' + t).classList.toggle('hide', t !== tab); $('t-' + t).classList.toggle('on', t === tab); });
-}
-window.addEventListener('hashchange', show); show();
-const timers = {};
-function stopCooldown(btn) { clearInterval(timers[btn.id]); delete timers[btn.id]; btn.disabled = false; btn.textContent = 'Send code'; }
-function cooldown(btn) {
-  let n = 60; clearInterval(timers[btn.id]); btn.disabled = true; btn.textContent = 'Resend (' + n + ')';
-  timers[btn.id] = setInterval(() => { n--; if (n <= 0) stopCooldown(btn); else btn.textContent = 'Resend (' + n + ')'; }, 1000);
-}
-async function sendCode(pfx, purpose) {
-  const email = $(pfx + '-email').value.trim(), btn = $(pfx + '-send');
-  clear(pfx + '-msg');
-  if (!email) return msg(pfx + '-msg', 'Enter your email first.');
-  btn.disabled = true;
-  try { await call('/v1/email/code', { email, purpose }); msg(pfx + '-msg', 'If the email is valid, a code was sent. Check Inbox and Spam. The code expires in 10 minutes.', true); cooldown(btn); }
-  catch (e) { msg(pfx + '-msg', e.message); btn.disabled = false; }
-}
-$('r-send').onclick = () => sendCode('r', 'register');
-$('p-send').onclick = () => sendCode('p', 'reset');
-function checkPw(pfx, a, b) {
-  if ($(a).value.length < 8) { msg(pfx + '-msg', 'The password must have at least 8 characters.'); return false; }
-  if ($(a).value !== $(b).value) { msg(pfx + '-msg', 'The passwords do not match.'); return false; }
-  if (!/^\d{6}$/.test($(pfx + '-code').value.trim())) { msg(pfx + '-msg', 'Click Send code, then enter the 6-digit code from your email.'); return false; }
-  return true;
-}
-$('f-register').onsubmit = async (ev) => {
-  ev.preventDefault(); clear('r-msg'); if (!checkPw('r', 'r-pw', 'r-pw2')) return;
-  const go = $('r-go'); go.disabled = true;
-  try { await call('/v1/register', { email: $('r-email').value.trim(), password: $('r-pw').value, code: $('r-code').value.trim() });
-    msg('r-msg', 'Account created. Open MTMover and sign in with this email.', true); $('f-register').reset(); stopCooldown($('r-send')); }
-  catch (e) { msg('r-msg', e.message); }
-  go.disabled = false;
-};
-$('f-reset').onsubmit = async (ev) => {
-  ev.preventDefault(); clear('p-msg'); if (!checkPw('p', 'p-pw', 'p-pw2')) return;
-  const go = $('p-go'); go.disabled = true;
-  try { await call('/v1/password/reset', { email: $('p-email').value.trim(), code: $('p-code').value.trim(), password: $('p-pw').value });
-    msg('p-msg', 'Password changed. Sign in to MTMover with the new password.', true); $('f-reset').reset(); stopCooldown($('p-send')); }
-  catch (e) { msg('p-msg', e.message); }
-  go.disabled = false;
-};
+(function () {
+  'use strict';
+  var API = 'https://mtmover-license.mtmover.workers.dev', KEY = 'mtm_web_token', MAXROWS = 500;
+  var state = null;
+  function $(id) { return document.getElementById(id); }
+  function store(t) { try { if (t) localStorage.setItem(KEY, t); else localStorage.removeItem(KEY); } catch (e) {} }
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  async function call(p, body) {
+    var r, j = {};
+    try { r = await fetch(API + p, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }); }
+    catch (e) { throw new Error('Cannot reach the server. Check your connection and try again.'); }
+    try { j = await r.json(); } catch (e) {}
+    if (!r.ok || !j.ok) { var er = new Error(j.message || ('Error ' + r.status)); er.status = r.status; er.code = j.error; throw er; }
+    return j;
+  }
+  function msg(id, text, ok) { var m = $(id); m.className = 'ac-msg ' + (ok ? 'ok' : 'err'); m.textContent = text; }
+  function clear(id) { $(id).className = 'ac-msg'; $(id).textContent = ''; }
+  function curTab() { var h = (location.hash || '').replace('#', ''); return h === 'register' || h === 'reset' ? h : 'signin'; }
+  function show() {
+    var t = curTab();
+    ['signin', 'register', 'reset'].forEach(function (x) { $('f-' + x).classList.toggle('hide', x !== t); $('t-' + x).classList.toggle('on', x === t); });
+  }
+  function showAuth() { $('auth').classList.remove('hide'); $('dash').classList.add('hide'); show(); }
+  function showDash() { $('auth').classList.add('hide'); $('dash').classList.remove('hide'); }
+  function fmtDate(sec) { return sec ? new Date(sec * 1000).toISOString().slice(0, 10) : ''; }
+  function cell(text) { var c = document.createElement('td'); c.textContent = text; return c; }
+  function row(vals, cls) { var r = document.createElement('tr'); if (cls) r.className = cls; vals.forEach(function (v) { r.appendChild(cell(v)); }); return r; }
+  function csvCell(v) { var s = String(v == null ? '' : v); if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; }
+  function renderLicenses(s) {
+    var b = $('lic-body'); b.textContent = '';
+    s.licenses.forEach(function (l) {
+      var unlimited = l.qty === null || l.qty === undefined;
+      b.appendChild(row([l.name, unlimited ? 'Unlimited' : String(l.qty), String(l.used), l.available === null || l.available === undefined ? '-' : String(l.available), l.expires_at ? fmtDate(l.expires_at) : 'No expiry', l.status === 'active' ? 'Active' : 'Expired'], l.status === 'active' ? '' : 'ac-dim'));
+    });
+    $('lic-empty').classList.toggle('hide', s.licenses.length > 0);
+  }
+  function renderUsage() {
+    if (!state) return;
+    var q = $('u-filter').value.trim().toLowerCase(), b = $('u-body'); b.textContent = '';
+    var rows = state.usage.filter(function (u) { return !q || (u.source_id + ' ' + (u.project || '') + ' ' + u.name).toLowerCase().indexOf(q) >= 0; });
+    rows.slice(0, MAXROWS).forEach(function (u) {
+      b.appendChild(row([u.name, u.source_id, u.project || '', fmtDate(u.claimed_at), u.active ? 'Active' : 'Expired'], u.active ? '' : 'ac-dim'));
+    });
+    var n = state.usage.length;
+    $('u-note').textContent = n === 0 ? 'No source has used a license yet.' :
+      'Showing ' + Math.min(rows.length, MAXROWS) + ' of ' + rows.length + (rows.length !== n ? ' matching (' + n + ' in total)' : '') + (rows.length > MAXROWS ? '. Use the filter or download the CSV to see all.' : '.');
+  }
+  function render(s) {
+    state = s;
+    $('who').textContent = s.email;
+    var t = $('trial');
+    if (s.trial && s.trial.active) { t.textContent = 'Free trial active until ' + fmtDate(s.trial.expires_at) + ' (up to 5 items per module run).'; t.classList.remove('hide'); } else { t.textContent = ''; t.classList.add('hide'); }
+    renderLicenses(s); renderUsage();
+  }
+  function csv() {
+    if (!state) return;
+    var lines = [['Product', 'Source', 'Project', 'Date', 'License'].map(csvCell).join(',')];
+    state.usage.forEach(function (u) { lines.push([u.name, u.source_id, u.project || '', fmtDate(u.claimed_at), u.active ? 'Active' : 'Expired'].map(csvCell).join(',')); });
+    var blob = new Blob(['\ufeff' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'mtmover-used-sources.csv';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  }
+  async function load() {
+    var t = stored();
+    if (!t) { showAuth(); return; }
+    try { var s = await call('/v1/web/summary', { token: t }); render(s); showDash(); }
+    catch (e) { if (e.status === 401) store(null); showAuth(); if (e.status !== 401) msg('l-msg', e.message); }
+  }
+  var timers = {};
+  function stopCooldown(btn) { clearInterval(timers[btn.id]); delete timers[btn.id]; btn.disabled = false; btn.textContent = 'Send code'; }
+  function cooldown(btn) {
+    var n = 60; clearInterval(timers[btn.id]); btn.disabled = true; btn.textContent = 'Resend (' + n + ')';
+    timers[btn.id] = setInterval(function () { n--; if (n <= 0) stopCooldown(btn); else btn.textContent = 'Resend (' + n + ')'; }, 1000);
+  }
+  async function sendCode(pfx, purpose) {
+    var email = $(pfx + '-email').value.trim(), btn = $(pfx + '-send');
+    clear(pfx + '-msg');
+    if (!email) return msg(pfx + '-msg', 'Enter your email first.');
+    btn.disabled = true;
+    try { await call('/v1/email/code', { email: email, purpose: purpose }); msg(pfx + '-msg', 'If the email is valid, a code was sent. Check Inbox and Spam. The code expires in 10 minutes.', true); cooldown(btn); }
+    catch (e) { msg(pfx + '-msg', e.message); btn.disabled = false; }
+  }
+  function checkPw(pfx, a, b) {
+    if ($(a).value.length < 8) { msg(pfx + '-msg', 'The password must have at least 8 characters.'); return false; }
+    if ($(a).value !== $(b).value) { msg(pfx + '-msg', 'The passwords do not match.'); return false; }
+    if (!/^\d{6}$/.test($(pfx + '-code').value.trim())) { msg(pfx + '-msg', 'Click Send code, then enter the 6-digit code from your email.'); return false; }
+    return true;
+  }
+  function backToSignin(email, text) { $('l-email').value = email; $('l-pw').value = ''; location.hash = '#signin'; show(); msg('l-msg', text, true); }
+
+  window.addEventListener('hashchange', function () { if (!$('auth').classList.contains('hide')) show(); });
+  $('r-send').onclick = function () { sendCode('r', 'register'); };
+  $('p-send').onclick = function () { sendCode('p', 'reset'); };
+  $('f-signin').onsubmit = async function (ev) {
+    ev.preventDefault(); clear('l-msg');
+    var go = $('l-go'); go.disabled = true;
+    try { var r = await call('/v1/web/login', { email: $('l-email').value.trim(), password: $('l-pw').value }); store(r.token); $('l-pw').value = ''; await load(); }
+    catch (e) { msg('l-msg', e.message); }
+    go.disabled = false;
+  };
+  $('f-register').onsubmit = async function (ev) {
+    ev.preventDefault(); clear('r-msg'); if (!checkPw('r', 'r-pw', 'r-pw2')) return;
+    var go = $('r-go'), email = $('r-email').value.trim(); go.disabled = true;
+    try { await call('/v1/register', { email: email, password: $('r-pw').value, code: $('r-code').value.trim() }); $('f-register').reset(); stopCooldown($('r-send')); backToSignin(email, 'Account created. Sign in with your email and password.'); }
+    catch (e) { msg('r-msg', e.message); }
+    go.disabled = false;
+  };
+  $('f-reset').onsubmit = async function (ev) {
+    ev.preventDefault(); clear('p-msg'); if (!checkPw('p', 'p-pw', 'p-pw2')) return;
+    var go = $('p-go'), email = $('p-email').value.trim(); go.disabled = true;
+    try { await call('/v1/password/reset', { email: email, code: $('p-code').value.trim(), password: $('p-pw').value }); $('f-reset').reset(); stopCooldown($('p-send')); backToSignin(email, 'Password changed. Sign in with the new password.'); }
+    catch (e) { msg('p-msg', e.message); }
+    go.disabled = false;
+  };
+  $('signout').onclick = async function () {
+    var t = stored(); store(null); state = null;
+    try { if (t) await call('/v1/web/logout', { token: t }); } catch (e) {}
+    $('u-body').textContent = ''; $('lic-body').textContent = ''; showAuth();
+  };
+  $('u-filter').oninput = renderUsage;
+  $('u-csv').onclick = csv;
+  show(); load();
+})();
 </script>
-</body>
-</html>
+</body></html>
