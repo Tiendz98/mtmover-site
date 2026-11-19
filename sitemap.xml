@@ -1,17 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://mtmover.tech/</loc></url>
-<url><loc>https://mtmover.tech/features.html</loc></url>
-<url><loc>https://mtmover.tech/how-it-works.html</loc></url>
-<url><loc>https://mtmover.tech/pricing.html</loc></url>
-<url><loc>https://mtmover.tech/download.html</loc></url>
-<url><loc>https://mtmover.tech/faq.html</loc></url>
-<url><loc>https://mtmover.tech/knowledge-base.html</loc></url>
-<url><loc>https://mtmover.tech/support.html</loc></url>
-<url><loc>https://mtmover.tech/privacy.html</loc></url>
-<url><loc>https://mtmover.tech/terms.html</loc></url>
-<url><loc>https://mtmover.tech/products/tenant-to-tenant.html</loc></url>
-<url><loc>https://mtmover.tech/products/imap-migration.html</loc></url>
-<url><loc>https://mtmover.tech/products/mailbox-tools.html</loc></url>
-<url><loc>https://mtmover.tech/products/backup-restore.html</loc></url>
-<url><loc>https://mtmover.tech/eula.html</loc></url><url><loc>https://mtmover.tech/refund.html</loc></url></urlset>
+  <url>
+    <loc>https://mtmover.tech/</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/features.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/how-it-works.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/pricing.html</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/download.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/faq.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/knowledge-base.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/support.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/privacy.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/terms.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/products/tenant-to-tenant.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/products/imap-migration.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/products/mailbox-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/products/backup-restore.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/eula.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/refund.html</loc>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/guides/microsoft-365-tenant-to-tenant-email-migration.html</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/guides/imap-to-microsoft-365-migration.html</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://mtmover.tech/guides/mtmover-demo-validation-checklist.html</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+</urlset>
