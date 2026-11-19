@@ -4,7 +4,7 @@
   if (window.MTMCart) return;
   var MIN_ORDER = 10, MAXQ = 100000, KEY = 'mtm_cart', TOKEN = 'mtm_web_token', MAIL = 'contact@mtmover.tech';
   var API = 'https://mtmover-license.mtmover.workers.dev';
-  var PAYMENT_ENABLED = false; /* set to true when the card checkout is connected */
+  var PAYMENT_ENABLED = !!(window.MTM_PADDLE && window.MTM_PADDLE.token && window.MTM_PADDLE.env); /* S17: on when assets/paddle-config.js has a Paddle token */
   var PRODUCTS = [
     { id: 't2t_email', name: 'Tenant to Tenant: Email', unit: 'mailbox', price: 2, term: 'Perpetual', desc: 'Migrate Exchange Online mailboxes between Microsoft 365 tenants. One unit per source mailbox.' },
     { id: 't2t_sites', name: 'Tenant to Tenant: OneDrive / SharePoint / Teams', unit: 'site', price: 2, term: 'Perpetual', desc: 'Migrate OneDrive accounts, SharePoint sites and Teams sites. One unit per site.' },
@@ -193,8 +193,59 @@
     cart[id] = p.flat ? 1 : Math.min(MAXQ, (cart[id] || 0) + clampQty(qty));
     save(); openDrawer('cart');
   }
+  /* S17: online payment with Paddle. The license server creates the checkout (prices never come from the browser) and grants the license from Paddle's webhook. */
+  var paddleReady = false, paying = false;
+  function paddleScript(cb) {
+    if (window.Paddle) return cb(null);
+    var s = document.createElement('script'); s.src = 'https://cdn.paddle.com/paddle/v2/paddle.js'; s.async = true;
+    s.onload = function () { cb(window.Paddle ? null : new Error('Paddle did not load')); };
+    s.onerror = function () { cb(new Error('Paddle did not load')); };
+    document.head.appendChild(s);
+  }
+  function paddleInit(cfg) {
+    if (paddleReady) return true;
+    try {
+      if (cfg.env === 'sandbox' && window.Paddle.Environment) window.Paddle.Environment.set('sandbox');
+      window.Paddle.Initialize({ token: cfg.token, eventCallback: paddleEvent });
+      paddleReady = true;
+      return true;
+    } catch (e) { return false; }
+  }
+  function paddleEvent(ev) { if (ev && ev.name === 'checkout.completed') paymentDone(); }
+  function paymentDone() {
+    cart = {}; save(); step = 'cart'; paying = false; render();
+    if (bodyEl && bodyEl.insertBefore) bodyEl.insertBefore(el('p', 'mtmc-msg ok', 'Payment received. Your license is added to your account within a minute and Paddle emails your receipt. Open My licenses in the app, or My account on this site.'), bodyEl.firstChild || null);
+  }
+  function payNow(info) {
+    var cfg = window.MTM_PADDLE || {};
+    if (!cfg.token || paying) return;
+    var tok = '';
+    try { tok = localStorage.getItem(TOKEN) || ''; } catch (e) {}
+    if (!tok) { msg('Please sign in first (Sign in, top right), then open the cart again. The license is added to the account you sign in with.', 'err'); return; }
+    paying = true; msg('Preparing your secure checkout...', 'ok');
+    var items = Object.keys(info.cart).map(function (id) { return { sku: id, qty: info.cart[id] }; });
+    fetch(API + '/v1/checkout/create', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token: tok, items: items }) })
+      .then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }); })
+      .then(function (x) {
+        if (!x.j || !x.j.ok) {
+          paying = false;
+          if (x.s === 401) { try { localStorage.removeItem(TOKEN); } catch (e) {} }
+          msg((x.j && x.j.message) || 'Could not start the checkout. Please try again, or order by email.', 'err');
+          return;
+        }
+        paddleScript(function (err) {
+          if (err || !paddleInit(cfg)) { paying = false; msg('The payment window could not load. Turn off your ad blocker for this site, or order by email below.', 'err'); return; }
+          paying = false;
+          var who = x.j.email || info.email;
+          msg(who && info.email && who.toLowerCase() !== info.email.toLowerCase() ? 'The license will be added to the account you are signed in with: ' + who : '', who && info.email && who.toLowerCase() !== info.email.toLowerCase() ? 'ok' : '');
+          try { window.Paddle.Checkout.open({ transactionId: x.j.transaction_id, customer: { email: who }, settings: { displayMode: 'overlay', theme: 'light', allowLogout: false } }); }
+          catch (e) { msg('Could not open the checkout. Please order by email below.', 'err'); }
+        });
+      })
+      .catch(function () { paying = false; msg('Cannot reach the server. Check your connection and try again, or order by email below.', 'err'); });
+  }
   load(); mountFab(); render();
   window.addEventListener('storage', function (e) { if (e.key === KEY || e.key === null) { load(); render(); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeDrawer(); });
-  window.MTMCart = { PRODUCTS: PRODUCTS, MIN_ORDER: MIN_ORDER, money: money, clampQty: clampQty, add: add, open: openDrawer, close: closeDrawer, onPay: null };
+  window.MTMCart = { PRODUCTS: PRODUCTS, MIN_ORDER: MIN_ORDER, money: money, clampQty: clampQty, add: add, open: openDrawer, close: closeDrawer, onPay: payNow };
 })();
