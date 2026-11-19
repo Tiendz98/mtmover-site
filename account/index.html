@@ -79,7 +79,7 @@
 </form>
 </div>
 <div id="dash" class="hide">
-<div class="ac-top"><div><h1>My account</h1><p class="ac-sub">Signed in as <b id="who"></b></p></div><button type="button" class="ac-btn" id="signout">Sign out</button></div>
+<div class="ac-top"><div><h1>My account</h1><p class="ac-sub">Signed in as <b id="who"></b></p></div></div>
 <div id="trial" class="ac-note hide"></div>
 <h2>Licenses</h2>
 <div class="tw"><table class="tbl"><thead><tr><th>Product</th><th>Quantity</th><th>Used</th><th>Available</th><th>Valid until</th><th>Status</th></tr></thead><tbody id="lic-body"></tbody></table></div>
@@ -216,7 +216,7 @@
     catch (e) { msg('p-msg', e.message); }
     go.disabled = false;
   };
-  $('signout').onclick = async function () {
+  if ($('signout')) $('signout').onclick = async function () {
     var t = stored(); store(null); state = null;
     try { if (t) await call('/v1/web/logout', { token: t }); } catch (e) {}
     $('u-body').textContent = ''; $('lic-body').textContent = ''; showAuth();
