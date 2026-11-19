@@ -23,7 +23,13 @@
   var bar = null;
   function style() { if (document.getElementById('mtma-style')) return; var st = el('style'); st.id = 'mtma-style'; st.textContent = CSS; document.head.appendChild(st); }
   function close() { if (bar && bar.parentNode) bar.parentNode.removeChild(bar); bar = null; }
-  function choose(v) { set(v); gtag('consent', 'update', { analytics_storage: v === 'granted' ? 'granted' : 'denied' }); close(); }
+  function choose(v) {
+    var was = get(); set(v);
+    gtag('consent', 'update', { analytics_storage: v === 'granted' ? 'granted' : 'denied' });
+    /* the page_view fired at load went out while consent was denied and is not counted: send it again once consent is granted */
+    if (v === 'granted' && was !== 'granted') gtag('event', 'page_view', { page_location: location.href, page_title: document.title });
+    close();
+  }
   function open() {
     if (bar) return; style();
     bar = el('div', 'mtma-bar'); bar.setAttribute('role', 'dialog'); bar.setAttribute('aria-label', 'Cookie consent');
