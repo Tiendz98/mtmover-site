@@ -145,7 +145,7 @@
   }
   function updateMail() {
     if (!mailLink) return;
-    var body = 'Hello MTMover,\n\nI would like to order:\n\n' + Object.keys(cart).map(line).join('\n') + '\n\nTotal: ' + money(total()) + '\nMTMover account email: ' + email + '\n\nPlease send me the payment link.\n';
+    var body = 'Hello MTMover,\n\nI would like to order:\n\n' + Object.keys(cart).map(line).join('\n') + '\n\nTotal: ' + money(total()) + '\nMTMover account email: ' + email + '\n\nPlease send me a quote, and an invoice if needed.\n';
     mailLink.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('MTMover order') + '&body=' + encodeURIComponent(body);
   }
   function renderPay(ids) {
@@ -173,7 +173,7 @@
     pay.onclick = function () { if (PAYMENT_ENABLED && ready() && window.MTMCart.onPay) window.MTMCart.onPay({ email: email, cart: JSON.parse(JSON.stringify(cart)), total: total() }); };
     a1.appendChild(pay); bodyEl.appendChild(a1);
     var a2 = el('div', 'mtmc-opt'); a2.setAttribute('style', '--c:#0b0f14');
-    a2.appendChild(el('h4', '', 'Contact us by email')); a2.appendChild(el('p', '', 'We reply with a payment link, and an invoice if you need one. Ask for a better price on large orders.'));
+    a2.appendChild(el('h4', '', 'Contact us by email')); a2.appendChild(el('p', '', 'We reply with a quote, and an invoice if you need one. Ask for a better price on large orders.'));
     mailLink = el('a', 'mtmc-btn mtmc-black', 'Send order by email'); mailLink.href = '#';
     mailLink.onclick = function (ev) { if (!ready()) { ev.preventDefault(); return; } msg('Your email app should open with the order. If it does not, write to ' + MAIL + '.', 'ok'); };
     a2.appendChild(mailLink); bodyEl.appendChild(a2); updateMail();
